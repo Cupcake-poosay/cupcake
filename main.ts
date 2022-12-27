@@ -17,6 +17,46 @@ sprites.onOverlap(SpriteKind.Enemy, SpriteKind.PlayerShot, function (sprite, oth
         lifeBarPic.fillRect(bossLife * 2, 0, 96 - bossLife * 2, 5, 15)
         lifeBar.setImage(lifeBarPic)
         if (bossLife <= 0) {
+            animation.runImageAnimation(
+            boss,
+            [img`
+                . 5 . 5 . . . c c c . . . . . . 
+                . . f . . . c b 5 c . . . . . 5 
+                . 5 . 5 c c c 5 5 c c c . . . 5 
+                . . c c b c 5 5 5 5 c c c c . 5 
+                . c b b 5 b 5 5 5 5 b 5 b b c . 
+                . c b 5 5 b b 5 5 b b 5 5 b c f 
+                . . f 5 5 5 b b b b 5 5 5 c . . 
+                . . f f 5 5 5 5 5 5 5 5 f f . . 
+                . . f f f f f e e f f f f f . . 
+                . . f f f b b b b b b f f f . . 
+                . . . f f b b f f b b f f . . . 
+                . . . e e f e e e e f e e . . . 
+                . . e b c b 5 b b 5 b f b e . . 
+                . . e e f 5 5 5 5 5 5 f e e . . 
+                . . . . c b 5 5 5 5 b c . . . . 
+                . . . . . f f f f f f . . . . . 
+                `,img`
+                . 5 . 5 . . . c c c . . . . . . 
+                . . 2 . . . c b 5 c . . . . . 5 
+                . 5 . 5 c c c 5 5 c c c . . . 5 
+                . . c c b c 5 5 5 5 c c c c . 5 
+                . c b b 5 b 5 5 5 5 b 5 b b c . 
+                . c b 5 5 b b 5 5 b b 5 5 b c 2 
+                . . f 5 5 5 b b b b 5 5 5 c . . 
+                . . f f 5 5 5 5 5 5 5 5 f f . 2 
+                2 . f f f f f e e f f f f f . . 
+                . . f f f b b b b b b f f f . . 
+                . . . f f b b f f b b f f . . 2 
+                . . . e e f e e e e f e e . . . 
+                . . e b c b 5 b b 5 b f b e . . 
+                . . e e f 5 5 5 5 5 5 f e e . . 
+                2 . . . c b 5 5 5 5 b c . . . . 
+                . . . . . f f f f f f . . . . . 
+                `],
+            500,
+            true
+            )
             game.over(true, effects.hearts)
         } else if (bossLife % 12 == 0) {
             preSetBossPosition(80, 30)
@@ -95,6 +135,46 @@ function shootBulletFromSprite (sourceSprite: Sprite, speed: number, angle: numb
         . . . . . . . . . . . . . . . . 
         `, sourceSprite, speed * Math.cos(angle / 57.3), speed * Math.sin(angle / 57.3))
     projectile.setFlag(SpriteFlag.AutoDestroy, true)
+    animation.runImageAnimation(
+    boss,
+    [img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . c c . . . . . . . . 
+        . . . . . . c 5 c . . . . . . . 
+        . . . . c c c 5 5 c c c . . . . 
+        . . c c c c 5 5 5 5 c b c c . . 
+        . c b b 5 b 5 5 5 5 b 5 b b c . 
+        . c b 5 5 b b 5 5 b b 5 5 b c . 
+        . . c 5 5 5 b b b b 5 5 5 f . . 
+        . . f f 5 5 5 5 5 5 5 5 f f . . 
+        . . f f f b f e e f b f f f . . 
+        . . f f f 1 f b b f 1 f 3 f . . 
+        . . . f f b b b b e e 3 f . . . 
+        . . e b b f e e e e b 3 e 3 . . 
+        . . e e f 5 5 b b 3 b b e . . . 
+        . . . f 5 5 5 5 5 e e c . . 3 . 
+        . . . . f f f f f f f . 3 . . . 
+        `,img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . c c . . . . . . . . 
+        . . . . . . c 5 c . . . . . . . 
+        . . . . c c c 5 5 c c c . . . . 
+        . . c c c c 5 5 5 5 c b c c . . 
+        . c b b 5 b 5 5 5 5 b 5 b b c . 
+        . c b 5 5 b b 5 5 b b 5 5 b c . 
+        . . c 5 5 5 b b b b 5 5 5 f . . 
+        . . f f 5 5 5 5 5 5 5 5 f f . . 
+        . . f f f b f e e f b f f f . . 
+        . . f f f 1 f b b f 1 f f f . . 
+        . . . f f b b b b e e e f . . . 
+        . . e b b f e e e e b b e . . . 
+        . . e e f 5 5 b b e b b e . . . 
+        . . . f 5 5 5 5 5 e e c . . . . 
+        . . . . f f f f f f f . . . . . 
+        `],
+    500,
+    false
+    )
     if (sourceSprite.kind() == SpriteKind.Player) {
         projectile.setKind(SpriteKind.PlayerShot)
         animation.runImageAnimation(
